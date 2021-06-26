@@ -45,7 +45,12 @@ RSpec.describe '生徒管理機能', type: :system do
       it '生徒が編集される' do
         click_on '生徒一覧'
         expect(current_path).to have_content "/students"
+        # binding.irb
+        select(value = "2年生", from: "q[school_year_eq]")
+        click_on 'commit'
         click_on '生徒詳細', match: :first
+        sleep(0.5)
+        # binding.irb
         click_on '編集'
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '生徒情報を編集する'
@@ -65,6 +70,7 @@ RSpec.describe '生徒管理機能', type: :system do
         click_on '生徒一覧'
         expect(current_path).to have_content "/students"
         click_on '生徒詳細', match: :first
+        sleep(0.5)
         click_on '削除'
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content "生徒一覧"
@@ -76,12 +82,11 @@ RSpec.describe '生徒管理機能', type: :system do
     context '生徒名と学年検索でand検索した場合' do
       it '生徒一覧で検索ができる' do
         click_on '生徒一覧'
-        # binding.irb
         expect(current_path).to eq "/students"
         expect(page).to have_content '生徒一覧'
         expect(page).to have_content '生徒名 学年'
         fill_in 'q[student_name_cont]',with: 'し'
-        select(value = "1年生", from: "q_school_year_eq")
+        select(value = "2年生", from: "q_school_year_eq")
         click_on'commit'
         expect(current_path).to eq "/students"
         expect(page).to have_content 'むさし'

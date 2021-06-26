@@ -1,6 +1,9 @@
 require 'rails_helper'
 RSpec.describe 'User関連機能',type: :system do
   let!(:user){create(:user)}
+  let!(:user2){create(:user2)}
+  let!(:post){create(:post,user_id: user.id)}
+
   before do
     visit root_path
   end
@@ -22,7 +25,6 @@ RSpec.describe 'User関連機能',type: :system do
     context '入力漏れが合った場合' do
       it 'サインアップできない' do
         visit new_user_registration_path
-        # find("#sign_up").click
         click_button 'アカウント登録'
         expect(page).to have_content "名前を入力してください"
         expect(page).to have_content "メールアドレスを入力してください"
@@ -32,7 +34,6 @@ RSpec.describe 'User関連機能',type: :system do
     context '全ての記述が正しい場合' do
       it 'ログインできる' do
         visit new_user_session_path
-        # find("#log_in").click
         fill_in 'user[email]',with: 'kawai@kawai.com'
         fill_in 'user[password]', with: 'password'
         click_button 'ログイン'
@@ -43,7 +44,6 @@ RSpec.describe 'User関連機能',type: :system do
     context 'emailとpasswordが一致しない場合' do
       it 'ログインできない' do
         visit new_user_session_path
-        # find("#log_in").click
         fill_in 'user[email]',with: 'kawai@kawai.com'
         fill_in 'user[password]', with: 'ミスパスワード'
         click_button 'ログイン'
@@ -56,7 +56,6 @@ RSpec.describe 'User関連機能',type: :system do
         it  'トップページに戻りログイン状態が解除される' do
           visit root_path
           visit new_user_session_path
-          # find("#log_in").click
           fill_in 'user[email]',with: 'kawai@kawai.com'
           fill_in 'user[password]', with: 'password'
           click_button 'ログイン'
@@ -71,11 +70,16 @@ RSpec.describe 'User関連機能',type: :system do
     describe 'その他機能' do
         it 'フォロー一覧機能' do
           visit new_user_session_path
-          fill_in 'user[email]',with: 'kawai@kawai.com'
-          fill_in 'user[password]', with: 'password'
-          # binding.irb
-          click_button 'ログイン'
-          click_on 'following'
+          fill_in 'user[email]',with: 'tukahara@tukahara.com'
+          fill_in 'user[password]', with: 'password2'
+          click_on 'commit'
+          click_on '日記一覧'
+          click_on '詳細'
+          click_on '河合'
+          expect(page).to have_content 'My Profile'
+          click_on 'commit'
+          click_on '1followers'
+          expect(page).to have_content '塚原'
           expect(page).to have_content 'Top'
           expect(page).to have_content 'My Profile'
           expect(page).to have_content 'アカウント編集'
@@ -84,7 +88,6 @@ RSpec.describe 'User関連機能',type: :system do
         end
         it 'ゲストログイン機能' do
           visit root_path
-          # binding.irb
           click_on 'ゲストログイン（閲覧用）'
           expect(page).to have_content '生徒一覧'
           expect(page).to have_content '日記一覧'
@@ -92,7 +95,6 @@ RSpec.describe 'User関連機能',type: :system do
         end
         it 'ゲスト管理者ログイン機能' do
           visit root_path
-          # binding.irb
           click_on 'ゲスト管理者ログイン（閲覧用）'
           expect(page).to have_content '生徒一覧'
           expect(page).to have_content '日記一覧'
@@ -101,7 +103,6 @@ RSpec.describe 'User関連機能',type: :system do
         end
         it 'ゲストコーチログイン機能' do
           visit root_path
-          # binding.irb
           click_on 'ゲストコーチログイン（閲覧用）'
           expect(page).to have_content '生徒一覧'
           expect(page).to have_content '生徒健康情報一覧'
