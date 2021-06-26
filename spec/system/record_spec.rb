@@ -97,7 +97,7 @@ RSpec.describe '健康情報管理機能', type: :system do
         expect(page).to have_content '生徒一覧'
         expect(page).to have_content '生徒名 学年'
         fill_in 'q[student_name_cont]',with: 'し'
-        select(value = "1年生", from: "q_school_year_eq")
+        select(value = "2年生", from: "q_school_year_eq")
         click_on'commit'
         expect(current_path).to eq "/students"
         expect(page).to have_content 'むさし'
