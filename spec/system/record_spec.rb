@@ -5,8 +5,8 @@ RSpec.describe '健康情報管理機能', type: :system do
   # let!(:student2) {create(:student2,user_id: user.id)}
   # let!(:student3) {create(:student3,user_id: user.id)}
   let!(:record) {create(:record,student_id: student.id)}
-  let!(:record2) {create(:record2,student_id: student.id)}
-  let!(:record3) {create(:record3,student_id: student.id)}
+  # let!(:record2) {create(:record2,student_id: student.id)}
+  # let!(:record3) {create(:record3,student_id: student.id)}
 
   before do
     visit new_user_session_path
@@ -15,7 +15,7 @@ RSpec.describe '健康情報管理機能', type: :system do
     fill_in 'user[password]',with: 'password'
     click_button 'ログイン'
   end
-  
+
   describe '新規作成機能' do
     context '健康情報を新規登録した場合' do
       it '登録した健康情報が表示される' do
