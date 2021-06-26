@@ -70,8 +70,10 @@ RSpec.describe '生徒管理機能', type: :system do
         click_on '生徒一覧'
         expect(current_path).to have_content "/students"
         click_on '生徒詳細', match: :first
-        sleep(0.5)
+        # sleep(2.0)
+        # binding.irb
         click_on '削除'
+        sleep(2.0)
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content "生徒一覧"
         expect(page).to have_content "生徒情報を削除しました！"
