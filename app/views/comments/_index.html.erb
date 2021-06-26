@@ -18,7 +18,7 @@
       <p><%= image_tag comment.image.url, class: 'rounded-circle' if comment.image.present?%></p>
       <% if comment.user == current_user %>
         <p><%= link_to "コメント編集", edit_post_comment_path(@post, comment), remote: true %></p>
-        <p><%= link_to 'コメントを削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
+        <p><%= link_to 'コメント削除', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
       <% end %>
       <p class = "hr"></p>
     <% end %>
