@@ -9,6 +9,29 @@
 .hope{
   margin: 0 auto;
 }
+
+.post_center{
+  margin: 0 auto;
+}
+
+.hope {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.hope,
+.hope th,
+.hope td {
+  border: 1px solid #ccc;
+}
+.hope th,
+.hope td {
+  padding: 10px;
+}
+.hope th {
+  color: #fff;
+  background: #555;
+  // background: #993741;
+}
 // img {
 //   width: 250px;
 // }
