@@ -5,6 +5,27 @@
 .student_center{
   margin: 0 auto;
 }
+
+.student_center {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.student_center,
+.student_center th,
+.student_center td {
+  border: 1px solid #ccc;
+}
+.student_center th,
+.student_center td {
+  padding: 10px;
+}
+.student_center th {
+  color: #fff;
+  background: #555;
+  // background: #993741;
+}
+
+
 // .new_students {
 //   text-align: center;
 //   position: absolute;
