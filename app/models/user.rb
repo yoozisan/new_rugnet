@@ -25,7 +25,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   # has_many :records, through: :student
   has_many :posts, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :students, dependent: :destroy
   has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
@@ -36,6 +36,9 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  #   def clean_conversations
+  #   Conversation.where("(sender_id = ?) OR (recipient_id = ?)", self.id, self.id).destroy_all
+  # end
   #指定のユーザをフォローする
   def follow!(other_user)
     active_relationships.create!(followed_id: other_user.id)
