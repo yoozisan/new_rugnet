@@ -1,3 +1,4 @@
+<div class="main_content">
 <h1>健康管理一覧</h1>
 <%= search_form_for(@q, url: health_info_path, method: :get) do |f| %>
   <%= f.label :record_at, "日付" %>
@@ -44,3 +45,4 @@
 </table>
 </div><br>
 <%= link_to "生徒一覧に戻る", students_path %>
+</div>

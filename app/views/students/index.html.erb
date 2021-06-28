@@ -1,5 +1,6 @@
 <%= render'application/sidebar' %>
-<div class="old_students">
+
+<div class="old_students main_content">
 <h1>生徒一覧</h1>
 <p>(生徒の親は詳細から健康情報が登録可能)</p>
 
@@ -10,7 +11,7 @@
    <%= f.select :school_year_eq, Student.school_years.keys.to_a, {} %>
    <%= f.submit '検索' %>
  <% end %>
-<p class="discription">※カテゴリー(幼児：D 、１-２年生：C 、３-４年生：B 、５-６年生：A) </p>
+<p class="discription"><span>※カテゴリー(幼児：D 、１-２年生：C 、３-４年生：B 、５-６年生：A) </span></p>
 
 <p><%= notice %></p>
 <table class= "student_center">
