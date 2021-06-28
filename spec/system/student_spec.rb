@@ -67,10 +67,13 @@ RSpec.describe '生徒管理機能', type: :system do
   describe '生徒削除機能' do
     context '生徒を削除する場合' do
       it '生徒が削除できる' do
+        # binding.irb
         click_on '生徒一覧'
         expect(current_path).to have_content "/students"
-        click_on '生徒詳細', match: :first
-        # sleep(2.0)
+        # binding.irb
+        select(value = "2年生", from: "q[school_year_eq]")
+        click_on 'commit'
+        click_on '生徒詳細'
         # binding.irb
         click_on '削除'
         sleep(1.0)
