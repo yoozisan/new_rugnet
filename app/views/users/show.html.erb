@@ -4,7 +4,8 @@
   <div class="icon">
     <%= @user.name %><br>
     <br>
-    <%= image_tag(@user.image.to_s) %>
+    <%= image_tag(@user.image.to_s) %><br>
+    <%= render 'follow_form', user: @user %>
   </div><br><br><hr>
   <p>日記投稿<p>
   <% @users.each do |user| %>
@@ -20,6 +21,4 @@
   </div>
     <% end %>
   <% end %>
-<%= render 'follow_form', user: @user unless current_user == @user %>
-
 </div>

@@ -11,11 +11,11 @@
 <% end %>
   <div class="post_title">
     <%= form.label :タイトル %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder:"タイトルを入力" %>
   </div>
   <div class="post_content">
     <%= form.label :内容 %><br>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, placeholder:"内容を入力" %>
   </div><br>
   <div class="post_field">
     <%= form.label :画像 %><br>

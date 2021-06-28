@@ -73,7 +73,7 @@ RSpec.describe '生徒管理機能', type: :system do
         # sleep(2.0)
         # binding.irb
         click_on '削除'
-        sleep(2.0)
+        sleep(1.0)
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content "生徒一覧"
         expect(page).to have_content "生徒情報を削除しました！"
@@ -91,7 +91,7 @@ RSpec.describe '生徒管理機能', type: :system do
         select(value = "2年生", from: "q_school_year_eq")
         click_on'commit'
         expect(current_path).to eq "/students"
-        sleep(2.0)
+        sleep(1.0)
         expect(page).to have_content 'むさし'
         expect(page).to have_content 'B'
         expect(page).to have_content '1年生'

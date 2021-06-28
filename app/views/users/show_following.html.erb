@@ -1,6 +1,7 @@
 <%= render'application/sidebar' %>
+<h2>フォロー登録している人</h2>
 <% @user.following.each do |user| %>
-<table>
+<table class="following">
   <tr>
     <td>  <%= user.name %> </td>
     <td><%= link_to '詳細', user_path(user) %></td>
