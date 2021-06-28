@@ -137,17 +137,6 @@ RSpec.describe 'Admin', type: :system do
       end
     end
     context '管理者の場合,' do
-      it '管理者ページにアクセスできて健康情報の編集ができる。' do
-        expect(current_path).to eq rails_admin_path
-        find('.nav-pills').find_link('健康情報').click
-        find_by_id('list').find_by_id("bulk_form").find(".table-condensed").first('tr:nth-child(1) td:nth-child(9)').find(".list-inline").find_link('編集').click
-        find_by_id('record_record_at').set "2021年06月01日"
-        find_by_id('record_body_temperature').set "38.0"
-        click_button '保存'
-        expect(page).to have_content '健康情報の更新に成功しました'
-      end
-    end
-    context '管理者の場合,' do
       it '管理者ページにアクセスできて健康情報の削除ができる。' do
         expect(current_path).to eq rails_admin_path
         find('.nav-pills').find_link('健康情報').click
