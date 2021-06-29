@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    redirect_to posts_path, notice: "不正操作を記録しました。" unless current_user.id == @post.user.id
   end
 
   def show
