@@ -12,6 +12,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    redirect_to students_path, notice: "不正操作を記録しました。" unless current_user.id == @student.user.id
   end
 
   def show

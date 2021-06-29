@@ -24,6 +24,7 @@ class RecordsController < ApplicationController
   end
 
   def edit
+    redirect_to student_records_path, notice: "不正操作を記録しました。" unless current_user.id == @record.student.user.id
   end
 
   def show
