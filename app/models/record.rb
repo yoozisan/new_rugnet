@@ -1,7 +1,7 @@
 class Record < ApplicationRecord
   belongs_to :student
   validates :record_at, presence: true
-  validates :body_temperature, presence: true
+  validates :body_temperature, presence: true, length: { maximum: 4 }
   validate :record_date_cannot_be_in_the_future
   def record_date_cannot_be_in_the_future
     if record_at.present? && record_at > Date.today
